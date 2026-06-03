@@ -3,105 +3,69 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>CAPTURED VISITORS</title>
-</head>
+<title>BOUND VISITOR</title>
 
-<body style="
+<style>
+
+body{
 background:#000;
 text-align:center;
 padding-top:40px;
-overflow:hidden;
+margin:0;
+overflow-x:hidden;
 font-family:
 'Yu Mincho',
 'Hiragino Mincho ProN',
 'HGS明朝E',
 serif;
-">
+}
 
-<div style="
+.title{
 color:#aa0000;
-font-size:32px;
-margin-bottom:50px;
-font-family:
-'Yu Mincho',
-'Hiragino Mincho ProN',
-serif;
-letter-spacing:1px;
-">
+font-size:clamp(28px,6vw,48px);
+margin-bottom:60px;
+letter-spacing:2px;
+}
 
-✝ 迷える仔羊たちへ ✝
-
-</div>
-
-<div style="
+.youare{
 color:#990000;
-font-size:24px;
-letter-spacing:5px;
-margin-bottom:0px;
-font-family:
-'Yu Mincho',
-'Hiragino Mincho ProN',
-serif;
-">
+font-size:clamp(18px,3vw,28px);
+letter-spacing:6px;
+margin-bottom:10px;
+}
 
-YOU ARE THE
-
-</div>
-
-<div id="counter" style="
+#counter{
 font-family:Arial,sans-serif;
-font-size:140px;
+font-size:min(140px,28vw);
 font-weight:bold;
 line-height:1;
 color:#ff3333;
+
 text-shadow:
 0 0 10px #ff0000,
 0 0 20px #ff0000,
 0 0 40px #ff0000,
 0 0 80px #ff0000,
 0 0 160px #ff0000;
+
 animation:pulse 1.2s infinite alternate;
-">
+}
 
-00000
-
-</div>
-
-<div style="
+.bound{
 color:#990000;
-font-size:42px;
+font-size:clamp(24px,6vw,48px);
 letter-spacing:4px;
 margin-top:-10px;
-font-family:
-'Yu Mincho',
-'Hiragino Mincho ProN',
-serif;
-">
+white-space:nowrap;
+}
 
-BOUND VISITOR
-
-</div>
-
-<div style="
-margin-top:10px;
-font-size:18px;
-line-height:1.6;
+.info{
+margin-top:15px;
+font-size:clamp(14px,3vw,20px);
+line-height:1.5;
 color:#880000;
-font-family:
-'Yu Mincho',
-'Hiragino Mincho ProN',
-serif;
-">
+}
 
-キリ番踏み逃げOK
-
-<br>
-
-報告はXにてお気軽に！
-
-</div>
-
-<style>
 @keyframes pulse{
 from{
 opacity:0.8;
@@ -110,24 +74,54 @@ to{
 opacity:1;
 }
 }
+
 </style>
+
+</head>
+
+<body>
+
+<div class="title">
+✝ 迷える仔羊たちへ ✝
+</div>
+
+<div class="youare">
+YOU ARE THE
+</div>
+
+<div id="counter">
+00000
+</div>
+
+<div class="bound">
+BOUND VISITOR
+</div>
+
+<div class="info">
+キリ番踏み逃げOK
+<br>
+報告はXにてお気軽に！
+</div>
+
 <script type="module">
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+
 import {
-  getFirestore,
-  doc,
-  getDoc,
-  updateDoc,
-  increment
+getFirestore,
+doc,
+getDoc,
+updateDoc,
+increment
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBbLByJis7FdIf3uOuMNt7YKyZS9xZpPc",
-  authDomain: "akira15956-45399.firebaseapp.com",
-  projectId: "akira15956-45399",
-  storageBucket: "akira15956-45399.firebasestorage.app",
-  messagingSenderId: "149692658782",
-  appId: "1:149692658782:web:f26da6e6d387a1e647b0cf"
+apiKey: "AIzaSyBbLByJis7FdIf3uOuMNt7YKyZS9xZpPc",
+authDomain: "akira15956-45399.firebaseapp.com",
+projectId: "akira15956-45399",
+storageBucket: "akira15956-45399.firebasestorage.app",
+messagingSenderId: "149692658782",
+appId: "1:149692658782:web:f26da6e6d387a1e647b0cf"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -135,16 +129,18 @@ const db = getFirestore(app);
 
 const ref = doc(db, "counter", "visitors");
 
-await updateDoc(ref, {
-  count: increment(1)
+await updateDoc(ref,{
+count:increment(1)
 });
 
 const snap = await getDoc(ref);
 
-if (snap.exists()) {
-  document.getElementById("counter").textContent =
-    String(snap.data().count).padStart(5, "0");
+if(snap.exists()){
+document.getElementById("counter").textContent =
+String(snap.data().count).padStart(5,"0");
 }
+
 </script>
+
 </body>
 </html>
