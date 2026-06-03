@@ -42,7 +42,13 @@ VISITORS
 </p>
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  updateDoc,
+  increment
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBbLByJis7FdIf3uOuMNt7YKyZS9xZpPc",
@@ -56,7 +62,13 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-const snap = await getDoc(doc(db, "counter", "visitors"));
+const ref = doc(db, "counter", "visitors");
+
+await updateDoc(ref, {
+  count: increment(1)
+});
+
+const snap = await getDoc(ref);
 
 if (snap.exists()) {
   document.getElementById("counter").textContent =
