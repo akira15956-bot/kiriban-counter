@@ -40,6 +40,28 @@ VISITORS
 <p style="margin-top:40px;">
 キリ番報告歓迎！
 </p>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
+const firebaseConfig = {
+  apiKey: "AIzaSyBbLByJis7FdIf3uOuMNt7YKyZS9xZpPc",
+  authDomain: "akira15956-45399.firebaseapp.com",
+  projectId: "akira15956-45399",
+  storageBucket: "akira15956-45399.firebasestorage.app",
+  messagingSenderId: "149692658782",
+  appId: "1:149692658782:web:f26da6e6d387a1e647b0cf"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const snap = await getDoc(doc(db, "counter", "visitors"));
+
+if (snap.exists()) {
+  document.getElementById("counter").textContent =
+    String(snap.data().count).padStart(5, "0");
+}
+</script>
 </body>
 </html>
