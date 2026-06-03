@@ -8,20 +8,43 @@
 
 <body style="
 background:#000;
-color:#ff0000;
 text-align:center;
-font-family:Arial;
-padding-top:50px;
+font-family:Arial,sans-serif;
+padding-top:40px;
+overflow:hidden;
 ">
 
-<h1>CAPTURED</h1>
+<div style="
+color:#ff3333;
+font-size:30px;
+font-weight:bold;
+letter-spacing:4px;
+text-shadow:
+0 0 5px #ff0000,
+0 0 10px #ff0000,
+0 0 20px #ff0000,
+0 0 40px #ff0000,
+0 0 80px #ff0000;
+animation:pulse 1s infinite alternate;
+">
+
+YOU ARE THE
+
+</div>
 
 <div id="counter" style="
-font-size:72px;
+margin-top:20px;
+font-size:110px;
+font-weight:bold;
+color:#ff4444;
 text-shadow:
 0 0 10px #ff0000,
 0 0 20px #ff0000,
-0 0 40px #ff0000;
+0 0 40px #ff0000,
+0 0 80px #ff0000,
+0 0 120px #ff0000,
+0 0 200px #ff0000;
+animation:pulse 0.7s infinite alternate;
 ">
 
 00000
@@ -30,16 +53,64 @@ text-shadow:
 
 <div style="
 margin-top:20px;
-letter-spacing:8px;
+font-size:38px;
+font-weight:bold;
+letter-spacing:6px;
+color:#ff44ff;
+text-shadow:
+0 0 5px #ff00ff,
+0 0 10px #ff00ff,
+0 0 20px #ff00ff,
+0 0 40px #ff00ff,
+0 0 80px #ff00ff;
+animation:pulse 1s infinite alternate;
 ">
 
-VISITORS
+BOUND VISITOR
 
 </div>
 
-<p style="margin-top:40px;">
-キリ番報告歓迎！
-</p>
+<div style="
+margin-top:50px;
+display:inline-block;
+padding:20px 35px;
+border:3px solid #ff0000;
+box-shadow:
+0 0 10px #ff0000,
+0 0 20px #ff0000,
+0 0 40px #ff0000,
+0 0 80px #ff0000;
+color:#ffff66;
+font-size:20px;
+font-weight:bold;
+line-height:2;
+text-shadow:
+0 0 5px #ffff00,
+0 0 10px #ffff00,
+0 0 20px #ffff00;
+animation:pulse 1.2s infinite alternate;
+">
+
+★ キリ番踏み逃げOK ★
+
+<br><br>
+
+気が向いたらXのリプで教えてください
+
+</div>
+
+<style>
+@keyframes pulse{
+from{
+opacity:0.8;
+transform:scale(1);
+}
+to{
+opacity:1;
+transform:scale(1.05);
+}
+}
+</style>
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
 import {
